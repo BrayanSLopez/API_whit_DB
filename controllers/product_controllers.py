@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from services.producto_service import (
+from services.product_service import (
     get_all_bands, get_band_by_id, create_band, update_band, delete_band
 )
 
