@@ -1,62 +1,152 @@
-from repositories.band_repository import BandRepository
-from models.product_model import Producto
 from sqlalchemy.orm import Session
+from models import Categoria, Proveedor, Descuento, Impuesto, Producto
 
-"""
-Librerías utilizadas:
-- repositories.band_repository: Proporciona la clase BandRepository para la gestión de bandas en la base de datos.
-- models.band_model: Define el modelo Band que representa la entidad de banda musical.
-- sqlalchemy.orm.Session: Permite manejar la sesión de la base de datos para realizar operaciones transaccionales.
-"""
 
-class BandService:
-    """
-    Capa de servicios para la gestión de bandas musicales.
-    Esta clase orquesta la lógica de negocio relacionada con las bandas, utilizando el repositorio para acceder a los datos.
-    Permite mantener la lógica de negocio separada de la capa de acceso a datos y de la base de datos.
-    """
+class CategoriaRepository:
+    """Repositorio para la gestión de categorías."""
+
     def __init__(self, db_session: Session):
-        """
-        Inicializa el servicio de bandas con una sesión de base de datos y un repositorio de bandas.
-        """
-        self.repository = BandRepository(db_session)
+        self.db = db_session
 
-    def listar_bandas(self):
-        """
-        Recupera y retorna todas las bandas musicales registradas en el sistema.
-        Utiliza el repositorio para obtener la lista completa de bandas.
-        Es útil para mostrar catálogos o listados generales de bandas.
-        """
-        return self.repository.get_all_bands()
+    def get_all_categorias(self):
+        """Recupera todas las categorías."""
+        return self.db.query(Categoria).all()
 
-    def obtener_banda(self, band_id: int):
-        """
-        Busca y retorna una banda específica por su identificador único (ID).
-        Utiliza el repositorio para acceder a la banda correspondiente.
-        Es útil para mostrar detalles o realizar operaciones sobre una banda concreta.
-        """
-        return self.repository.get_band_by_id(band_id)
+    def create_categoria(self, nombre_categoria: str):
+        """Crea una nueva categoría."""
+        new_categoria = Categoria(nombre_categoria=nombre_categoria)
+        self.db.add(new_categoria)
+        self.db.commit()
+        self.db.refresh(new_categoria)
+        return new_categoria
 
-    def crear_banda(self, name: str):
-        """
-        Crea una nueva banda musical con el nombre proporcionado.
-        Utiliza el repositorio para almacenar la nueva banda en la base de datos.
-        Es útil para registrar nuevas bandas en el sistema.
-        """
-        return self.repository.create_band(name)
 
-    def actualizar_banda(self, band_id: int, name: str = None):
-        """
-        Actualiza la información de una banda existente, permitiendo modificar su nombre.
-        Utiliza el repositorio para realizar la actualización en la base de datos.
-        Es útil para mantener actualizada la información de las bandas.
-        """
-        return self.repository.update_band(band_id, name)
+class ProveedorRepository:
+    """Repositorio para la gestión de proveedores."""
 
-    def eliminar_banda(self, band_id: int):
-        """
-        Elimina una banda musical del sistema según su identificador único (ID).
-        Utiliza el repositorio para eliminar la banda de la base de datos.
-        Es útil para operaciones administrativas o de mantenimiento.
-        """
-        return self.repository.delete_band(band_id)
+    def __init__(self, db_session: Session):
+        self.db = db_session
+
+    def get_all_proveedores(self):
+        """Recupera todos los proveedores."""
+        return self.db.query(Proveedor).all()
+
+    def create_proveedor(self, nombre: str, telefono: str = None, email: str = None, direccion: str = None):
+        """Crea un nuevo proveedor."""
+        new_proveedor = Proveedor(
+            nombre=nombre,
+            telefono=telefono,
+            email=email,
+            direccion=direccion
+        )
+        self.db.add(new_proveedor)
+        self.db.commit()
+        self.db.refresh(new_proveedor)
+        return new_proveedor
+
+
+class DescuentoRepository:
+    """Repositorio para la gestión de descuentos."""
+
+    def __init__(self, db_session: Session):
+        self.db = db_session
+
+    def get_all_descuentos(self):
+        """Recupera todos los descuentos."""
+        return self.db.query(Descuento).all()
+
+    def create_descuento(self, nombre: str, porcentaje: float):
+        """Crea un nuevo descuento."""
+        new_descuento = Descuento(nombre=nombre, porcentaje=porcentaje)
+        self.db.add(new_descuento)
+        self.db.commit()
+        self.db.refresh(new_descuento)
+        return new_descuento
+
+
+class ImpuestoRepository:
+    """Repositorio para la gestión de impuestos."""
+
+    def __init__(self, db_session: Session):
+        self.db = db_session
+
+    def get_all_impuestos(self):
+        """Recupera todos los impuestos."""
+        return self.db.query(Impuesto).all()
+
+    def create_impuesto(self, nombre: str, porcentaje: float):
+        """Crea un nuevo impuesto."""
+        new_impuesto = Impuesto(nombre=nombre, porcentaje=porcentaje)
+        self.db.add(new_impuesto)
+        self.db.commit()
+        self.db.refresh(new_impuesto)
+        return new_impuesto
+
+
+class ProductoRepository:
+    """Repositorio para la gestión de productos."""
+
+    def __init__(self, db_session: Session):
+        self.db = db_session
+
+    def get_all_productos(self):
+        """Recupera todos los productos con sus relaciones."""
+        return self.db.query(Producto).all()
+
+    def get_producto_by_id(self, producto_id: int):
+        """Obtiene un producto por ID."""
+        return self.db.query(Producto).filter(Producto.id_producto == producto_id).first()
+
+    def create_producto(self, nombre_producto: str, precio: float, stock: int,
+                        id_categoria: int, id_descuento: int = None,
+                        id_iva: int = None, id_proveedor: int = None):
+        """Crea un nuevo producto."""
+        new_producto = Producto(
+            nombre_producto=nombre_producto,
+            Precio=precio,
+            Stock=stock,
+            id_categoria=id_categoria,
+            id_descuento=id_descuento,
+            id_iva=id_iva,
+            id_proveedor=id_proveedor
+        )
+        self.db.add(new_producto)
+        self.db.commit()
+        self.db.refresh(new_producto)
+        return new_producto
+
+    def update_producto(self, producto_id: int, nombre_producto: str = None,
+                        precio: float = None, stock: int = None,
+                        id_categoria: int = None, id_descuento: int = None,
+                        id_iva: int = None, id_proveedor: int = None):
+        """Actualiza los datos de un producto."""
+        producto = self.get_producto_by_id(producto_id)
+        if not producto:
+            return None
+
+        if nombre_producto:
+            producto.nombre_producto = nombre_producto
+        if precio is not None:
+            producto.Precio = precio
+        if stock is not None:
+            producto.Stock = stock
+        if id_categoria is not None:
+            producto.id_categoria = id_categoria
+        if id_descuento is not None:
+            producto.id_descuento = id_descuento
+        if id_iva is not None:
+            producto.id_iva = id_iva
+        if id_proveedor is not None:
+            producto.id_proveedor = id_proveedor
+
+        self.db.commit()
+        self.db.refresh(producto)
+        return producto
+
+    def delete_producto(self, producto_id: int):
+        """Elimina un producto por ID."""
+        producto = self.get_producto_by_id(producto_id)
+        if producto:
+            self.db.delete(producto)
+            self.db.commit()
+        return producto
