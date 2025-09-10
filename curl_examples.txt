@@ -1,0 +1,80 @@
+# -------------------- CATEGORÍAS --------------------
+
+# 1. Obtener todas las categorías
+curl -i http://localhost:5000/categorias
+
+# 2. Crear una categoría
+curl -i -X POST http://localhost:5000/categorias \
+  -H "Content-Type: application/json" \
+  -d '{"nombre_categoria": "Electrónica"}'
+
+
+# -------------------- PROVEEDORES --------------------
+
+# 3. Obtener todos los proveedores
+curl -i http://localhost:5000/proveedores
+
+# 4. Crear un proveedor
+curl -i -X POST http://localhost:5000/proveedores \
+  -H "Content-Type: application/json" \
+  -d '{"nombre": "Proveedor A", "telefono": "123456", "email": "proveedorA@mail.com", "direccion": "Calle 123"}'
+
+
+# -------------------- DESCUENTOS --------------------
+
+# 5. Obtener todos los descuentos
+curl -i http://localhost:5000/descuentos
+
+# 6. Crear un descuento
+curl -i -X POST http://localhost:5000/descuentos \
+  -H "Content-Type: application/json" \
+  -d '{"nombre": "Descuento verano", "porcentaje": 10.5}'
+
+
+# -------------------- IMPUESTOS --------------------
+
+# 7. Obtener todos los impuestos
+curl -i http://localhost:5000/impuestos
+
+# 8. Crear un impuesto
+curl -i -X POST http://localhost:5000/impuestos \
+  -H "Content-Type: application/json" \
+  -d '{"nombre": "IVA 19%", "porcentaje": 19.0}'
+
+
+# -------------------- PRODUCTOS --------------------
+
+# 9. Obtener todos los productos
+curl -i http://localhost:5000/productos
+
+# 10. Obtener un producto por ID (ejemplo: 1)
+curl -i http://localhost:5000/productos/1
+
+# 11. Crear un producto
+curl -i -X POST http://localhost:5000/productos \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nombre_producto": "Laptop",
+    "precio": 2500.00,
+    "stock": 15,
+    "id_categoria": 1,
+    "id_descuento": 1,
+    "id_iva": 1,
+    "id_proveedor": 1
+  }'
+
+# 12. Actualizar un producto existente (ejemplo: 1)
+curl -i -X PUT http://localhost:5000/productos/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nombre_producto": "Laptop Gamer",
+    "precio": 3000.00,
+    "stock": 10,
+    "id_categoria": 1,
+    "id_descuento": 1,
+    "id_iva": 1,
+    "id_proveedor": 1
+  }'
+
+# 13. Eliminar un producto existente (ejemplo: 1)
+curl -i -X DELETE http://localhost:5000/productos/1

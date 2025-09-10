@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models import Categoria, Proveedor, Descuento, Impuesto, Producto
+from models.product_model import Categoria, Proveedor, Descuento, Impuesto, Producto
 
 
 class CategoriaRepository:
