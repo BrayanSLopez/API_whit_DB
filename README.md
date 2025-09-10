@@ -1,5 +1,22 @@
-# API_whit_DB
-Primera api de python conectada a bases de datos
+# Proyecto de gestion de productos
+
+El proyecto es una base para la gestion de productos y sus diferentes dependencias
+
+## Descripción General
+El sistema permite crear productos, categorias, proveedores, descuentos y impuestos, se gestionaran los productos, su inventario y se relacionaran con su categoria, su proveedor y despuestos o impuestos si aplica.
+Permite crear, consultar, actualizar y eliminar productos, asi como crear y consultar categorias, proveedores, descuentos y impuestos. 
+
+**Instala las dependencias del proyecto:**
+  ```bash
+     pip install -r requirements.txt
+  ```
+**Iniciar el proyecto:**
+  ```bash
+       python main.py
+  ```
+
+
+
 
 
 Si quiere probar el flujo para saber si primero esta intentando crear la conexion con MySQL, cree un archivo .env y ponga la direccion de coneccion con su MySQL
