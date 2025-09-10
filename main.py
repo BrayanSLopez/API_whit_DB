@@ -1,5 +1,5 @@
 from flask import Flask
-from controllers.product_controllers import product_bp  # importa tu nuevo controlador
+from controllers.product_controllers import product_bp 
 
 app = Flask(__name__)
 
