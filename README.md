@@ -6,6 +6,12 @@ El proyecto es una base para la gestion de productos y sus diferentes dependenci
 El sistema permite crear productos, categorias, proveedores, descuentos y impuestos, se gestionaran los productos, su inventario y se relacionaran con su categoria, su proveedor y descuestos o impuestos si aplica.
 Permite crear, consultar, actualizar y eliminar productos, asi como crear y consultar categorias, proveedores, descuentos y impuestos. 
 
+## Estructura del Proyecto
+- `models/`: Definición de los modelos de datos (Band, Album) y documentación asociada.
+- `repositories/`: Implementación de la capa de acceso a datos (repositorios) y su documentación.
+- `controllers/`: (Por implementar) Lógica de los endpoints y controladores de la API.
+- `requirements.txt`: Lista de dependencias necesarias para ejecutar el proyecto.
+
 **Instala las dependencias del proyecto:**
   ```bash
      pip install -r requirements.txt
