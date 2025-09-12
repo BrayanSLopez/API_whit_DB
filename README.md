@@ -28,3 +28,6 @@ Se esta manejando una arquitectura por capaz, la cual permite organizar responsa
 
 Si quiere probar el flujo para saber si primero esta intentando crear la conexion con MySQL, cree un archivo .env y ponga la direccion de coneccion con su MySQL
 Ejemplo: MYSQL_URI=mysql+pymysql://root:mipassword@localhost:3306/mi_base
+
+
+##Este es la rama Releases
