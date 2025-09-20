@@ -65,6 +65,7 @@ class UserRepository:
         self.db.commit()
         self.db.refresh(user)
         return user
+    
     def delete_user(self, user_id: int):
         """
         Elimina un usuario de la base de datos por su ID.
