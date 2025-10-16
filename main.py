@@ -1,7 +1,7 @@
 from flask import Flask
 from config.jwt import *
 from config.database import engine
-from models.product_model import Base  # Asegúrate que Base esté correctamente importado
+from models.db import Base
 from controllers.product_controllers import product_bp
 from controllers.user_controllers import user_bp, register_jwt_error_handlers
 from flask_jwt_extended import JWTManager
