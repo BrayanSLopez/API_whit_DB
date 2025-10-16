@@ -3,7 +3,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 from sqlalchemy import Column, Integer, String
-from db import Base  # Si tu archivo Base está en db.py, esta importación es correcta
+from db import Base  
 
 class User(Base):
     """
