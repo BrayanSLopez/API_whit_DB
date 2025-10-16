@@ -5,6 +5,8 @@ from models.db import Base
 from controllers.product_controllers import product_bp
 from controllers.user_controllers import user_bp, register_jwt_error_handlers
 from flask_jwt_extended import JWTManager
+from models.user_model import User
+from models.product_model import Categoria, Proveedor, Descuento, Impuesto, Producto
 
 app = Flask(__name__)
 
@@ -29,4 +31,5 @@ if __name__ == "__main__":
     print("Verificando y creando tablas de base de datos si es necesario...")
     Base.metadata.create_all(engine)
     print("Tablas listas.")
+    print("Base de datos usada:", engine.url)
     app.run(debug=True)

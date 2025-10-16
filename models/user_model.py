@@ -3,7 +3,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 from sqlalchemy import Column, Integer, String
-from models.db import Base  
+from models.db import Base
 
 class User(Base):
     """

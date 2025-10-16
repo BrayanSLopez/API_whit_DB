@@ -3,9 +3,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 from sqlalchemy import Column, Integer, String, Numeric, ForeignKey
-from sqlalchemy.orm import relationship, declarative_base
-
-Base = declarative_base()
+from sqlalchemy.orm import relationship
+from models.db import Base
 
 """
 La clase Categoria representa una categoría de productos en el sistema.
