@@ -1,56 +1,90 @@
+# -------------------- USUARIOS --------------------
+
+# 1. Crear 10 usuarios
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user1", "password": "pass1", "email": "user1@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user2", "password": "pass2", "email": "user2@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user3", "password": "pass3", "email": "user3@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user4", "password": "pass4", "email": "user4@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user5", "password": "pass5", "email": "user5@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user6", "password": "pass6", "email": "user6@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user7", "password": "pass7", "email": "user7@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user8", "password": "pass8", "email": "user8@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user9", "password": "pass9", "email": "user9@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user10", "password": "pass10", "email": "user10@mail.com"}'
+
+# 2. Obtener tokens JWT para cada usuario
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user1", "password": "pass1"}'
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user2", "password": "pass2"}'
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user3", "password": "pass3"}'
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user4", "password": "pass4"}'
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user5", "password": "pass5"}'
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user6", "password": "pass6"}'
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user7", "password": "pass7"}'
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user8", "password": "pass8"}'
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user9", "password": "pass9"}'
+curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user10", "password": "pass10"}'
+
+# 3. Consultar rutas protegidas con cada token (reemplaza <TOKEN_USERX> por el token correspondiente)
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER1>"
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER2>"
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER3>"
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER4>"
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER5>"
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER6>"
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER7>"
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER8>"
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER9>"
+curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER10>"
+
 # -------------------- CATEGORÍAS --------------------
 
-# 1. Obtener todas las categorías
-curl -i http://localhost:5000/categorias
+# 4. Obtener todas las categorías (requiere token)
+curl -i http://localhost:5000/categorias -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 2. Crear una categoría
+# 5. Crear una categoría
 curl -i -X POST http://localhost:5000/categorias \
   -H "Content-Type: application/json" \
   -d '{"nombre_categoria": "Electrónica"}'
 
-
 # -------------------- PROVEEDORES --------------------
 
-# 3. Obtener todos los proveedores
-curl -i http://localhost:5000/proveedores
+# 6. Obtener todos los proveedores (requiere token)
+curl -i http://localhost:5000/proveedores -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 4. Crear un proveedor
+# 7. Crear un proveedor
 curl -i -X POST http://localhost:5000/proveedores \
   -H "Content-Type: application/json" \
   -d '{"nombre": "Proveedor A", "telefono": "123456", "email": "proveedorA@mail.com", "direccion": "Calle 123"}'
 
-
 # -------------------- DESCUENTOS --------------------
 
-# 5. Obtener todos los descuentos
-curl -i http://localhost:5000/descuentos
+# 8. Obtener todos los descuentos (requiere token)
+curl -i http://localhost:5000/descuentos -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 6. Crear un descuento
+# 9. Crear un descuento
 curl -i -X POST http://localhost:5000/descuentos \
   -H "Content-Type: application/json" \
   -d '{"nombre": "Descuento verano", "porcentaje": 10.5}'
 
-
 # -------------------- IMPUESTOS --------------------
 
-# 7. Obtener todos los impuestos
-curl -i http://localhost:5000/impuestos
+# 10. Obtener todos los impuestos (requiere token)
+curl -i http://localhost:5000/impuestos -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 8. Crear un impuesto
+# 11. Crear un impuesto
 curl -i -X POST http://localhost:5000/impuestos \
   -H "Content-Type: application/json" \
   -d '{"nombre": "IVA 19%", "porcentaje": 19.0}'
 
-
 # -------------------- PRODUCTOS --------------------
 
-# 9. Obtener todos los productos
-curl -i http://localhost:5000/productos
+# 12. Obtener todos los productos (requiere token)
+curl -i http://localhost:5000/productos -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 10. Obtener un producto por ID (ejemplo: 1)
+# 13. Obtener un producto por ID (ejemplo: 1)
 curl -i http://localhost:5000/productos/1
 
-# 11. Crear un producto
+# 14. Crear un producto
 curl -i -X POST http://localhost:5000/productos \
   -H "Content-Type: application/json" \
   -d '{
@@ -63,7 +97,7 @@ curl -i -X POST http://localhost:5000/productos \
     "id_proveedor": 1
   }'
 
-# 12. Actualizar un producto existente (ejemplo: 1)
+# 15. Actualizar un producto existente (ejemplo: 1)
 curl -i -X PUT http://localhost:5000/productos/1 \
   -H "Content-Type: application/json" \
   -d '{
@@ -76,5 +110,5 @@ curl -i -X PUT http://localhost:5000/productos/1 \
     "id_proveedor": 1
   }'
 
-# 13. Eliminar un producto existente (ejemplo: 1)
+# 16. Eliminar un producto existente (ejemplo: 1)
 curl -i -X DELETE http://localhost:5000/productos/1
