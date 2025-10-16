@@ -95,7 +95,7 @@ def create_user():
         return jsonify({'error': 'El nombre de usuario, la contraseña y el email son obligatorios'}), 400, {'Content-Type': 'application/json; charset=utf-8'}
     user = service.create_user(username, password, email, full_name)
     if not user:
-        return jsonify({'error': 'No se pudo crear el usuario'}), 400
+        return jsonify({'error': 'No se pudo crear el usuario'}), 400, {'Content-Type': 'application/json; charset=utf-8'}
     logger.info(f"Usuario creado: {username}")
     return jsonify({'id': user.id, 'username': user.username, 'email': user.email, 'full_name': user.full_name}), 201, {'Content-Type': 'application/json; charset=utf-8'}
 

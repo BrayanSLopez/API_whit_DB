@@ -1,16 +1,16 @@
 # -------------------- USUARIOS --------------------
 
 # 1. Crear 10 usuarios
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user1", "password": "pass1", "email": "user1@mail.com"}'
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user2", "password": "pass2", "email": "user2@mail.com"}'
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user3", "password": "pass3", "email": "user3@mail.com"}'
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user4", "password": "pass4", "email": "user4@mail.com"}'
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user5", "password": "pass5", "email": "user5@mail.com"}'
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user6", "password": "pass6", "email": "user6@mail.com"}'
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user7", "password": "pass7", "email": "user7@mail.com"}'
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user8", "password": "pass8", "email": "user8@mail.com"}'
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user9", "password": "pass9", "email": "user9@mail.com"}'
-curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user10", "password": "pass10", "email": "user10@mail.com"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user1", "password": "pass1", "email": "user1@mail.com", "full_name": "Usuario Uno"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user2", "password": "pass2", "email": "user2@mail.com", "full_name": "Usuario Dos"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user3", "password": "pass3", "email": "user3@mail.com", "full_name": "Usuario Tres"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user4", "password": "pass4", "email": "user4@mail.com", "full_name": "Usuario Cuatro"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user5", "password": "pass5", "email": "user5@mail.com", "full_name": "Usuario Cinco"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user6", "password": "pass6", "email": "user6@mail.com", "full_name": "Usuario Seis"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user7", "password": "pass7", "email": "user7@mail.com", "full_name": "Usuario Siete"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user8", "password": "pass8", "email": "user8@mail.com", "full_name": "Usuario Ocho"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user9", "password": "pass9", "email": "user9@mail.com", "full_name": "Usuario Nueve"}'
+curl -i -X POST http://localhost:5000/registry -H "Content-Type: application/json" -d '{"username": "user10", "password": "pass10", "email": "user10@mail.com", "full_name": "Usuario Diez"}'
 
 # 2. Obtener tokens JWT para cada usuario
 curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user1", "password": "pass1"}'
