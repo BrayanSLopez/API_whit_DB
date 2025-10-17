@@ -38,11 +38,16 @@ class UserRepository:
         instancia un nuevo objeto User y lo agrega a la sesión de la base de datos.
         Tras confirmar la transacción, retorna el nuevo usuario creado.
         """
+        # Crear una instancia de usuario con los datos proporcionados
         logger.info(f"Creando usuario: {username}")
         new_user = User(username=username, password=password, email=email, full_name=full_name)
+        
+        # Agregar el nuevo usuario a la base de datos y confirmar la transacción
         self.db.add(new_user)
         self.db.commit()
-        self.db.refresh(new_user)
+        self.db.refresh(new_user)  # Refresca la instancia del objeto para obtener los datos actualizados
+
+        logger.info(f"Usuario creado con éxito: {username}")
         return new_user
 
     def update_user(self, user_id: int, username: str = None, password: str = None, email: str = None, full_name: str = None):
@@ -64,6 +69,7 @@ class UserRepository:
                 user.full_name = full_name
             self.db.commit()
             self.db.refresh(user)
+            logger.info(f"Usuario actualizado: {user_id}")
             return user
         logger.warning(f"Usuario no encontrado para actualizar: {user_id}")
         return None
@@ -80,6 +86,7 @@ class UserRepository:
             logger.info(f"Eliminando usuario: {user_id}")
             self.db.delete(user)
             self.db.commit()
+            logger.info(f"Usuario eliminado: {user_id}")
             return user
         logger.warning(f"Usuario no encontrado para eliminar: {user_id}")
         return None
