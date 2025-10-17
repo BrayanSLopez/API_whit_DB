@@ -20,6 +20,12 @@ app.config['JWT_HEADER_TYPE'] = JWT_HEADER_TYPE  # Tipo de encabezado del token 
 # Inicializa el manager de JWT
 jwt = JWTManager(app)
 
+# Crear tablas ANTES de registrar blueprints y ejecutar la aplicación
+print("Verificando y creando tablas de base de datos si es necesario...")
+Base.metadata.create_all(engine)  # Crear todas las tablas en la base de datos si no existen
+print("Tablas listas.")
+print("Base de datos usada:", engine.url)
+
 # Registrar blueprints
 app.register_blueprint(product_bp)  # Ruta de productos
 app.register_blueprint(user_bp)  # Ruta de usuarios
@@ -28,10 +34,5 @@ app.register_blueprint(user_bp)  # Ruta de usuarios
 register_jwt_error_handlers(app)
 
 if __name__ == "__main__":
-    # Crear tablas automáticamente si no existen
-    print("Verificando y creando tablas de base de datos si es necesario...")
-    print("Tablas listas.")
-    print("Base de datos usada:", engine.url)
     app.run(debug=True)
-    Base.metadata.create_all(engine)  # Crear todas las tablas en la base de datos si no existen
 

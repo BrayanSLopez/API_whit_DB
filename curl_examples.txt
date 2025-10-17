@@ -24,67 +24,56 @@ curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" 
 curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user9", "password": "pass9"}'
 curl -i -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username": "user10", "password": "pass10"}'
 
-# 3. Consultar rutas protegidas con cada token (reemplaza <TOKEN_USERX> por el token correspondiente)
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER1>"
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER2>"
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER3>"
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER4>"
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER5>"
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER6>"
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER7>"
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER8>"
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER9>"
-curl -i -X GET http://localhost:5000/users -H "Authorization: Bearer <TOKEN_USER10>"
 
 # -------------------- CATEGORÍAS --------------------
 
-# 4. Obtener todas las categorías (requiere token)
+# 3. Obtener todas las categorías (requiere token)
 curl -i http://localhost:5000/categorias -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 5. Crear una categoría
+# 4. Crear una categoría
 curl -i -X POST http://localhost:5000/categorias \
   -H "Content-Type: application/json" \
   -d '{"nombre_categoria": "Electrónica"}'
 
 # -------------------- PROVEEDORES --------------------
 
-# 6. Obtener todos los proveedores (requiere token)
+# 5. Obtener todos los proveedores (requiere token)
 curl -i http://localhost:5000/proveedores -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 7. Crear un proveedor
+# 6. Crear un proveedor
 curl -i -X POST http://localhost:5000/proveedores \
   -H "Content-Type: application/json" \
   -d '{"nombre": "Proveedor A", "telefono": "123456", "email": "proveedorA@mail.com", "direccion": "Calle 123"}'
 
 # -------------------- DESCUENTOS --------------------
 
-# 8. Obtener todos los descuentos (requiere token)
+# 7. Obtener todos los descuentos (requiere token)
 curl -i http://localhost:5000/descuentos -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 9. Crear un descuento
+# 8. Crear un descuento
 curl -i -X POST http://localhost:5000/descuentos \
   -H "Content-Type: application/json" \
   -d '{"nombre": "Descuento verano", "porcentaje": 10.5}'
 
 # -------------------- IMPUESTOS --------------------
 
-# 10. Obtener todos los impuestos (requiere token)
+# 9. Obtener todos los impuestos (requiere token)
 curl -i http://localhost:5000/impuestos -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 11. Crear un impuesto
+# 10. Crear un impuesto
 curl -i -X POST http://localhost:5000/impuestos \
   -H "Content-Type: application/json" \
   -d '{"nombre": "IVA 19%", "porcentaje": 19.0}'
 
 # -------------------- PRODUCTOS --------------------
 
-# 12. Obtener todos los productos (requiere token)
+# 11. Obtener todos los productos (requiere token)
 curl -i http://localhost:5000/productos -H "Authorization: Bearer <TOKEN_USER1>"
 
-# 13. Obtener un producto por ID (ejemplo: 1)
+# 12. Obtener un producto por ID (ejemplo: 1)
 curl -i http://localhost:5000/productos/1
 
-# 14. Crear un producto
+# 13. Crear un producto
 curl -i -X POST http://localhost:5000/productos \
   -H "Content-Type: application/json" \
   -d '{
@@ -97,7 +86,7 @@ curl -i -X POST http://localhost:5000/productos \
     "id_proveedor": 1
   }'
 
-# 15. Actualizar un producto existente (ejemplo: 1)
+# 14. Actualizar un producto existente (ejemplo: 1)
 curl -i -X PUT http://localhost:5000/productos/1 \
   -H "Content-Type: application/json" \
   -d '{
@@ -110,5 +99,5 @@ curl -i -X PUT http://localhost:5000/productos/1 \
     "id_proveedor": 1
   }'
 
-# 16. Eliminar un producto existente (ejemplo: 1)
+# 15. Eliminar un producto existente (ejemplo: 1)
 curl -i -X DELETE http://localhost:5000/productos/1
