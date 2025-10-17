@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 load_dotenv()
 
 MYSQL_URI = os.getenv('MYSQL_URI')
-SQLITE_URI = 'sqlite:///bands_local.db'
+SQLITE_URI = 'sqlite:///products_local.db'
 
 def get_engine():
     """
