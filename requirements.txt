@@ -11,3 +11,4 @@ SQLAlchemy==2.0.30     # ORM para interactuar con bases de datos relacionales us
 pymysql==1.1.0         # Driver para conectar SQLAlchemy con bases de datos MySQL
 python-dotenv==1.0.1   # Cargar variables de entorno desde archivos .env
 Flask-JWT-Extended==4.6.0   # Autenticación JWT para Flask
+gunicorn==21.2.0       # Servidor WSGI para producción
