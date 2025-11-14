@@ -1,5 +1,7 @@
 from flask import Flask
 from config.jwt import JWT_SECRET_KEY, JWT_TOKEN_LOCATION, JWT_ACCESS_TOKEN_EXPIRES, JWT_HEADER_NAME, JWT_HEADER_TYPE
+import os
+from dotenv import load_dotenv
 from config.database import engine
 from models.db import Base
 from controllers.product_controllers import product_bp
@@ -7,6 +9,9 @@ from controllers.user_controllers import user_bp, register_jwt_error_handlers
 from flask_jwt_extended import JWTManager
 from models.product_model import Categoria, Proveedor, Descuento, Impuesto, Producto
 from models.user_model import User
+# Cargar variables de entorno
+load_dotenv()
+
 
 app = Flask(__name__)
 
@@ -34,5 +39,7 @@ app.register_blueprint(user_bp)  # Ruta de usuarios
 register_jwt_error_handlers(app)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Usar configuración de entorno para debug
+    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    app.run(debug=debug_mode)
 
