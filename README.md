@@ -2,6 +2,8 @@
 
 Base para la gestión de productos, categorías, proveedores, descuentos e impuestos. Permite operaciones CRUD sobre productos y consultas de entidades relacionadas.
 
+# Esta es la rama development
+
 ## Instalación
 
 1. Clonar el repositorio:
